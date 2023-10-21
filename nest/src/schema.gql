@@ -1,0 +1,13 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type Cart {
+  id: Int!
+  apiId: String!
+  createdAt: Int!
+}
+
+type Query {
+  cart(id: Int!): Cart!
+}

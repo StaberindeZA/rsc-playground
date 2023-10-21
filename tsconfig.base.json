@@ -16,7 +16,8 @@
     "baseUrl": ".",
     "paths": {
       "@rsc-playground/components": ["components/src/index.ts"],
-      "@rsc-playground/components/server": ["components/src/server.ts"]
+      "@rsc-playground/components/server": ["components/src/server.ts"],
+      "@rsc-playground/nest/cart": ["libs/nest/cart/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
