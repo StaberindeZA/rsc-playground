@@ -1,4 +1,5 @@
 import styles from './cart.module.css';
+import CounterOverall from './counter-overall';
 import IncrementClient from './increment-client';
 import IncrementServer from './increment-server';
 import IncrementState from './increment-state';
@@ -39,12 +40,13 @@ export async function Cart(props: CartProps) {
         <li>Api ID: {apiId}</li>
         <li>Created At: {createdAt}</li>
       </ul>
-      <p className={styles['overallCounter']}>Counter: {counter}</p>
+      <CounterOverall />
       <div>
-        <IncrementServer counter={counter} />
+        <IncrementServer />
         <IncrementClient counter={counter} />
         <IncrementState />
       </div>
+      <p>This is totally static data. This doesn't change at all</p>
     </div>
   );
 }

@@ -2,6 +2,8 @@
 import { useState } from 'react';
 import styles from './increment-client.module.css';
 
+const CART_ID = 1;
+
 /* eslint-disable-next-line */
 export interface IncrementClientProps {
   counter: number;
@@ -9,7 +11,7 @@ export interface IncrementClientProps {
 
 export function IncrementClient(props: IncrementClientProps) {
   const [counter, setCounter] = useState(props.counter);
-  const CART_ID = 1;
+
   const updateCartCounter = async (updateValue: number) => {
     const result = await fetch('http://localhost:3000/graphql', {
       method: 'POST',

@@ -1,16 +1,14 @@
-import { revalidatePath, revalidateTag } from 'next/cache';
+import { revalidateTag } from 'next/cache';
 import styles from './increment-server.module.css';
+import { getCounter } from '../utils';
 
 const CART_ID = 1;
 
 /* eslint-disable-next-line */
-export interface IncrementServerProps {
-  counter: number;
-}
+export interface IncrementServerProps {}
 
 const updateCartCounter = async () => {
   'use server';
-  console.log('REINO');
   const result = await fetch('http://localhost:3000/graphql', {
     method: 'POST',
     headers: {
@@ -31,17 +29,17 @@ const updateCartCounter = async () => {
     .then((res) => res.json())
     .catch((error) => console.error(error));
 
-  console.log(result);
-  revalidateTag('cart');
+  revalidateTag('counterOnly');
 };
 
-export function IncrementServer(props: IncrementServerProps) {
+export async function IncrementServer(props: IncrementServerProps) {
+  const counter = await getCounter(CART_ID);
   return (
     <div className={styles['container']}>
       <h2>Cart Counter - SERVER</h2>
       <p>Hit the button to increment the counter on the cart</p>
       <form action={updateCartCounter}>
-        <p>Counter: {props.counter}</p>
+        <p>Counter: {counter}</p>
         <button>Increment</button>
       </form>
     </div>
