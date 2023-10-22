@@ -39,9 +39,12 @@ export async function Cart(props: CartProps) {
         <li>Api ID: {apiId}</li>
         <li>Created At: {createdAt}</li>
       </ul>
-      <IncrementServer counter={counter} />
-      <IncrementClient counter={counter} />
-      <IncrementState />
+      <p className={styles['overallCounter']}>Counter: {counter}</p>
+      <div>
+        <IncrementServer counter={counter} />
+        <IncrementClient counter={counter} />
+        <IncrementState />
+      </div>
     </div>
   );
 }

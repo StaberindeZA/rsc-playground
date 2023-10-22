@@ -1,2 +1,8 @@
 .page {
 }
+
+.loading {
+  text-align: center;
+  margin-top: 64px;
+  font-size: 64px;
+}

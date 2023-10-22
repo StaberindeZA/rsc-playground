@@ -15,6 +15,12 @@ export class CartService {
     return data.find((cart) => cart.id === id) || data[0];
   }
 
+  async incrementCounter(id: number): Promise<Cart> {
+    const cartIndex = data.findIndex((cart) => cart.id === id);
+    data[cartIndex].counter = data[cartIndex].counter + 1;
+    return data[cartIndex];
+  }
+
   async updateCounter(id: number, counterValue: number): Promise<Cart> {
     const cartIndex = data.findIndex((cart) => cart.id === id);
     data[cartIndex].counter = counterValue;

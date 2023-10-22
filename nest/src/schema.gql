@@ -14,5 +14,6 @@ type Query {
 }
 
 type Mutation {
+  incrementCounter(id: Int!): Cart!
   updateCounter(id: Int!, counterValue: Int!): Cart!
 }
