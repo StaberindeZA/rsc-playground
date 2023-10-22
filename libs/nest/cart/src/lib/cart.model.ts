@@ -10,4 +10,7 @@ export class Cart {
 
   @Field((type) => Int)
   createdAt: number;
+
+  @Field((type) => Int)
+  counter: number;
 }

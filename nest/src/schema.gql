@@ -6,8 +6,13 @@ type Cart {
   id: Int!
   apiId: String!
   createdAt: Int!
+  counter: Int!
 }
 
 type Query {
   cart(id: Int!): Cart!
+}
+
+type Mutation {
+  updateCounter(id: Int!, counterValue: Int!): Cart!
 }

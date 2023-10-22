@@ -1,4 +1,4 @@
-import { Args, Int, Query, Resolver } from '@nestjs/graphql';
+import { Args, Int, Mutation, Query, Resolver } from '@nestjs/graphql';
 import { Cart } from './cart.model';
 import { CartService } from './cart.service';
 
@@ -9,5 +9,13 @@ export class CartResolver {
   @Query(() => Cart)
   async cart(@Args('id', { type: () => Int }) id: number) {
     return this.cartService.getCart(id);
+  }
+
+  @Mutation(() => Cart)
+  async updateCounter(
+    @Args('id', { type: () => Int }) id: number,
+    @Args('counterValue', { type: () => Int }) counterValue: number
+  ) {
+    return this.cartService.updateCounter(id, counterValue);
   }
 }
