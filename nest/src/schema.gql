@@ -9,11 +9,20 @@ type Cart {
   counter: Int!
 }
 
+type Counter {
+  id: Int!
+  cartId: Int!
+  counter: Int!
+}
+
 type Query {
+  counter(cartId: Int!): Counter!
   cart(id: Int!): Cart!
 }
 
 type Mutation {
+  incrementCounterByCartId(cartId: Int!): Counter!
+  updateCounterByCartId(cartId: Int!, counterValue: Int!): Counter!
   incrementCounter(id: Int!): Cart!
   updateCounter(id: Int!, counterValue: Int!): Cart!
 }

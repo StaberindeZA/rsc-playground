@@ -6,11 +6,11 @@ const CART_ID = 1;
 
 /* eslint-disable-next-line */
 export interface IncrementClientProps {
-  counter: number;
+  // counter: number;
 }
 
 export function IncrementClient(props: IncrementClientProps) {
-  const [counter, setCounter] = useState(props.counter);
+  const [counter, setCounter] = useState(0);
 
   const updateCartCounter = async (updateValue: number) => {
     const result = await fetch('http://localhost:3000/graphql', {

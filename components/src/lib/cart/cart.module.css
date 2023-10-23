@@ -10,3 +10,8 @@
   margin-bottom: 16px;
 }
 
+.incrementContainer {
+  display: grid;
+  gap: 24px;
+}
+

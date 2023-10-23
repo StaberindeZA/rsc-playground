@@ -16,10 +16,7 @@ const updateCartCounter = async () => {
     },
     body: JSON.stringify({
       query: `mutation {
-          incrementCounter(id: ${CART_ID}) {
-            id
-            apiId
-            createdAt
+          incrementCounterByCartId(cartId: ${CART_ID}) {
             counter
           }
         }`,
@@ -29,7 +26,7 @@ const updateCartCounter = async () => {
     .then((res) => res.json())
     .catch((error) => console.error(error));
 
-  revalidateTag('counterOnly');
+  revalidateTag('counter');
 };
 
 export async function IncrementServer(props: IncrementServerProps) {
