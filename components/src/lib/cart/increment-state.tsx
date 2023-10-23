@@ -10,6 +10,14 @@ export function IncrementState(props: IncrementStateProps) {
   return (
     <div className={styles['container']}>
       <h1>Increment State Counter</h1>
+      <ul>
+        <li>This is a client component</li>
+        <li>
+          It has state only local to the component, meaning on a page refresh,
+          the state will be lost
+        </li>
+        <li>Notice how state is not lost when the counters are updated</li>
+      </ul>
       <p>Counter: {counter}</p>
       <button onClick={() => incrementCounter(counter + 1)}>Increment</button>
     </div>

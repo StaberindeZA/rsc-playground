@@ -8,7 +8,7 @@ export interface CounterOverallProps {}
 
 export async function CounterOverall(props: CounterOverallProps) {
   const counter = await getCounter(CART_ID);
-  return <p className={styles['overallCounter']}>Counter: {counter}</p>;
+  return <p className={styles['overallCounter']}>Overall Counter: {counter}</p>;
 }
 
 export default CounterOverall;

@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import styles from './increment-client.module.css';
+import { useRouter } from 'next/navigation';
 
 const CART_ID = 1;
 
@@ -10,10 +11,10 @@ export interface IncrementClientProps {
 }
 
 export function IncrementClient(props: IncrementClientProps) {
-  const [counter, setCounter] = useState(props.counter);
+  const router = useRouter();
 
   const updateCartCounter = async (updateValue: number) => {
-    const result = await fetch('http://localhost:3000/graphql', {
+    await fetch('http://localhost:3000/graphql', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -32,15 +33,20 @@ export function IncrementClient(props: IncrementClientProps) {
     })
       .then((res) => res.json())
       .catch((error) => console.error(error));
-    setCounter(result.data.updateCounter.counter);
+    router.refresh();
   };
 
   return (
     <div className={styles['container']}>
-      <h2>Cart Counter - CLIENT</h2>
+      <h2>Cart Counter - Client component</h2>
       <p>Hit the button to increment the counter on the cart</p>
-      <p>Counter: {counter}</p>
-      <button onClick={() => updateCartCounter(counter + 1)}>Increment</button>
+      <ul>
+        <li>Notice </li>
+      </ul>
+      <p>Counter: {props.counter}</p>
+      <button onClick={() => updateCartCounter(props.counter + 1)}>
+        Increment
+      </button>
     </div>
   );
 }

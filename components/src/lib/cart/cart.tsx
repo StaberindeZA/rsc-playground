@@ -1,3 +1,4 @@
+import { getCart } from '../utils';
 import styles from './cart.module.css';
 import CounterOverall from './counter-overall';
 import IncrementClient from './increment-client';
@@ -10,27 +11,7 @@ export interface CartProps {}
 export async function Cart(props: CartProps) {
   const CART_ID = 1;
 
-  const result = await fetch('http://localhost:3000/graphql', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      query: `{
-        cart(id: ${CART_ID}) {
-          id
-          apiId
-          createdAt
-          counter
-        }
-      }`,
-    }),
-    cache: 'no-cache',
-  })
-    .then((res) => res.json())
-    .catch((error) => console.error(error));
-
-  const { id, apiId, createdAt, counter } = result.data.cart;
+  const { id, apiId, createdAt, counter } = await getCart(CART_ID);
 
   return (
     <div className={styles['container']}>
@@ -41,12 +22,11 @@ export async function Cart(props: CartProps) {
         <li>Created At: {createdAt}</li>
       </ul>
       <CounterOverall />
-      <div>
+      <div className={styles['incrementContainer']}>
         <IncrementServer />
         <IncrementClient counter={counter} />
         <IncrementState />
       </div>
-      <p>This is totally static data. This doesn't change at all</p>
     </div>
   );
 }

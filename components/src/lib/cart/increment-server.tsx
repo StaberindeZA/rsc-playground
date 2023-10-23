@@ -29,14 +29,14 @@ const updateCartCounter = async () => {
     .then((res) => res.json())
     .catch((error) => console.error(error));
 
-  revalidateTag('counterOnly');
+  revalidateTag('counter');
 };
 
 export async function IncrementServer(props: IncrementServerProps) {
   const counter = await getCounter(CART_ID);
   return (
     <div className={styles['container']}>
-      <h2>Cart Counter - SERVER</h2>
+      <h2>Cart Counter - Server Component with Server Action</h2>
       <p>Hit the button to increment the counter on the cart</p>
       <form action={updateCartCounter}>
         <p>Counter: {counter}</p>
